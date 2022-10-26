@@ -1,14 +1,16 @@
-train_source_model文件夹中分别是8个源模型以及4个googlenet的无关模型的训练代码
+# nkunetlab-OD_Model_Ownership_Verification
 
-finetune文件夹中分别是8个源模型的微调代码
+## Code framework
 
-knowledge_distilltion分别是8个源模型蒸馏到googlenet的代码
-
-prune中是通用的剪枝的代码
-
-dataset中是读数据集的代码，注意new_imagenet.py同时可以用于读取mini_imagenet的风格迁移数据集和隐写数据集
-
-get_outliers中调用离群点算法的代码，被测试的对象按不同脚本文件分别是全部模型使用相应数据集的测试集、全部模型使用相应数据集的训练集、mini_imagenet对应的模型使用隐写数据集/风格迁移数据集的测试集进行测试、mini_imagenet对应的模型使用隐写数据集/风格迁移数据集的训练集进行测试、全部模型使用无关数据集cars的部分训练集进行测试
-
-
-
+- `train_source_model`: The training code for 8 source models and 4 unrelated models from googlenet.
+- `finetune`: The fine-tuning code for each of the 8 source models.
+- `knowledge_distilltion`: The knowledge-distilltion code for each of the 8 source models which distilled to googlenet.
+- `prune`: Generic pruning code.
+- `dataset`: The code for reading the dataset.
+  - WARNING: `new_imagenet.py` can also be used to read the style migration dataset and steganography dataset of mini-imagenet.
+- `get_outliers`: The code that calls the outlier algorithm, the tested objects are tested according to different script files: 
+  - the test set of all models using the corresponding dataset
+  - the train set of all models using the corresponding dataset
+  - the test set of mini-imagenet corresponding models using steganographic datasets/style migration dataset
+  - the train set of mini-imagenet corresponding models using steganographic datasets/style migration dataset
+  - the train set of all models using part of the train set of the unrelated dataset cars
